@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "105467515679",
+    "project_id": "findmyfood-ddef1",
+    "storage_bucket": "findmyfood-ddef1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105467515679:android:a0bacd6bac5c9c394e162a",
+        "android_client_info": {
+          "package_name": "com.maverick.findmyfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105467515679-22nd8g00ro1664894blju4il9fu3pkqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVka4oBKQMCCL0XrGhL0iid0rVUY2HSF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105467515679-22nd8g00ro1664894blju4il9fu3pkqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
