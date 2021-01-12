@@ -82,7 +82,7 @@
         {
             // Configure Google Sign In
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken("105467515679-22nd8g00ro1664894blju4il9fu3pkqn.apps.googleusercontent.com")
+                    .requestIdToken(getString(R.string.default_web_client_id))
                     .requestEmail()
                     .build();
             // Build a GoogleSignInClient with the options specified by gso.
@@ -106,8 +106,6 @@
                     firebaseAuthWithGoogle(account);
                 } catch (ApiException e) {
                     // Google Sign In failed, update UI appropriately
-                    Toast.makeText(this,"Fatal Error Please Try Again!",Toast.LENGTH_SHORT).show();
-                    System.out.println(e.fillInStackTrace());
                 }
             }
         }
