@@ -14,6 +14,7 @@
     import android.os.Bundle;
     import android.util.Log;
     import android.view.View;
+    import android.widget.Button;
     import android.widget.Toast;
 
     import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -36,7 +37,7 @@
         private static final int RC_SIGN_IN =9001 ;
         private GoogleSignInClient mGoogleSignInClient;
         private FirebaseAuth mAuth;
-        private SignInButton gbutton;
+        private Button gbutton;
 
         @Override
         protected void onStart() {
@@ -54,7 +55,7 @@
             setContentView(R.layout.activity_main);
             mAuth=FirebaseAuth.getInstance();
             requestService();
-            gbutton=(SignInButton)findViewById(R.id.gbutton);
+            gbutton=(Button)findViewById(R.id.gsignin_button);
             gbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
