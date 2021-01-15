@@ -15,6 +15,7 @@
     import android.util.Log;
     import android.view.View;
     import android.widget.Button;
+    import android.widget.ProgressBar;
     import android.widget.Toast;
 
     import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -38,14 +39,21 @@
         private GoogleSignInClient mGoogleSignInClient;
         private FirebaseAuth mAuth;
         private Button gbutton;
+        ProgressBar progressBar;
 
         @Override
         protected void onStart() {
             super.onStart();
+            gbutton.setVisibility(View.INVISIBLE);
             FirebaseUser user = mAuth.getCurrentUser();
             if(user!=null)
             {
                 Toast.makeText(this, "Already Signed in!",Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+            else {
+                gbutton.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
             }
         }
 
@@ -56,6 +64,7 @@
             mAuth=FirebaseAuth.getInstance();
             requestService();
             gbutton=(Button)findViewById(R.id.gsignin_button);
+            progressBar=(ProgressBar)findViewById(R.id.progressBar);
             gbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -64,7 +73,7 @@
             });
             checkLocationPermission();
         }
-
+        //method to check permissions
         public void checkLocationPermission() {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
@@ -89,6 +98,7 @@
             // Build a GoogleSignInClient with the options specified by gso.
             mGoogleSignInClient=GoogleSignIn.getClient(this, gso);
         }
+
         private void signIn() {
             Intent signInIntent = mGoogleSignInClient.getSignInIntent();
             startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -97,7 +107,7 @@
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
-
+            progressBar.setVisibility(View.VISIBLE);
             // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
             if (requestCode == RC_SIGN_IN) {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -120,6 +130,7 @@
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(),"Signin Success",Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.INVISIBLE);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(),"Authentication Failed",Toast.LENGTH_SHORT).show();
