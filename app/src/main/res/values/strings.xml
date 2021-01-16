@@ -3,4 +3,6 @@
     <string name="title_location_permission">Grant Location</string>
     <string name="text_location_permission">Allow App to use your location</string>
     <string name="ok">Allow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
