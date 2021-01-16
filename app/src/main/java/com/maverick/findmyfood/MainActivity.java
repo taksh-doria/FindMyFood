@@ -118,7 +118,7 @@
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getApplicationContext(),"Signin Success",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(this,HomeActivity.class));
                             progressBar.setVisibility(View.INVISIBLE);
                             gbutton.setVisibility(View.INVISIBLE);
                         } else {
