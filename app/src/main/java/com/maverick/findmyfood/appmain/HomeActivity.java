@@ -37,6 +37,9 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.account:
                         fragment=new AccountFragment();
                         break;
+                    case R.id.favourites:
+                        fragment=new FavouriteFragment();
+                        break;
                 }
                 if (fragment!=null)
                 {

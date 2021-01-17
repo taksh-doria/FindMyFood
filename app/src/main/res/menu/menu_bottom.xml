@@ -10,6 +10,13 @@
         android:title="Home"
         />
     <item
+        android:id="@+id/favourites"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="Favourites"
+        app:cnb_backgroundColor="#ff785b"
+        app:cnb_iconColor="#ffffff"
+        app:cnb_textColor="#ffffff" />
+    <item
         android:id="@+id/account"
         android:icon="@drawable/ic_outline_account_circle_24"
         app:cnb_iconColor="#ffffff"
