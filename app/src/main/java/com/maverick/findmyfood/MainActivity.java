@@ -2,6 +2,7 @@
 
     import androidx.annotation.NonNull;
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.appcompat.app.AppCompatDelegate;
     import androidx.core.app.ActivityCompat;
     import androidx.core.content.ContextCompat;
 
@@ -62,6 +63,8 @@
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            //disable nightmode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             setContentView(R.layout.activity_main);
             mAuth=FirebaseAuth.getInstance();
             mGoogleSignInClient= Authentication.requestService(this);
