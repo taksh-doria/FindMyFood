@@ -35,6 +35,7 @@
     import com.google.firebase.auth.GoogleAuthProvider;
     import com.maverick.findmyfood.appmain.HomeActivity;
     import com.maverick.findmyfood.utility.Authentication;
+    import com.maverick.findmyfood.utility.Permission;
 
     public class MainActivity extends AppCompatActivity {
         public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -76,20 +77,8 @@
                     signIn();
                 }
             });
-            checkLocationPermission();
+            Permission.checkLocationPermission(this,this);
         }
-        //method to check permissions
-        public void checkLocationPermission() {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_LOCATION);
-            }
-        }
-
-
 
         private void signIn() {
             Intent signInIntent = mGoogleSignInClient.getSignInIntent();
