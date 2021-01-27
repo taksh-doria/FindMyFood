@@ -87,7 +87,7 @@ public class Location
         @Override
         protected void onPostExecute(String s) {
             System.out.println(s);
-            //new ParserTask().execute(s);
+            new ParserTask().execute(s);
 
         }
 
@@ -110,7 +110,7 @@ public class Location
             @Override
             protected void onPostExecute(List<HashMap<String, String>> hashMaps) {
                 super.onPostExecute(hashMaps);
-
+                System.out.println(hashMaps);
             }
         }
     }
