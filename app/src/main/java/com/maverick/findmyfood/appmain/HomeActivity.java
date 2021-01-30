@@ -18,12 +18,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         navbar=(ChipNavigationBar)findViewById(R.id.navbar);
+        fragmentManager=getSupportFragmentManager();
         if (savedInstanceState==null)
         {
+            System.out.println("no fragmants selected");
             navbar.setItemSelected(R.id.home,true);
-            fragmentManager=getSupportFragmentManager();
             HomeFragment homeFragment=new HomeFragment();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container,homeFragment);
+            fragmentManager.beginTransaction().add(R.id.fragment_container,homeFragment).commit();
+        }
+        else
+        {
+            System.out.println("not null saved instance");
         }
         navbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
