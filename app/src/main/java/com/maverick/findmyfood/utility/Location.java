@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.maverick.findmyfood.R;
+import com.maverick.findmyfood.model.Restaurant;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +27,13 @@ import java.util.List;
 
 public class Location
 {
+    public RecyclerView recyclerView;
     public android.location.Location user_location;
+
+    public Location(RecyclerView recyclerView) {
+        this.recyclerView=recyclerView;
+    }
+
     public android.location.Location getLocation(Context context)
     {
         FusedLocationProviderClient fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(context);
@@ -91,12 +100,12 @@ public class Location
 
         }
 
-        private class ParserTask extends  AsyncTask<String,Integer, List<HashMap<String,String>>> {
+        private class ParserTask extends  AsyncTask<String,Integer, List<Restaurant>> {
             @Override
             //parser to parse json data from web
-            protected List<HashMap<String, String>> doInBackground(String... strings) {
+            protected List<Restaurant> doInBackground(String... strings) {
                 JsonParser parser=new JsonParser();
-                List<HashMap<String,String>> fetched_resturantList=null;
+                List<Restaurant> fetched_resturantList=null;
                 JSONObject object=null;
                 try {
                     object=new JSONObject(strings[0]);
@@ -108,9 +117,10 @@ public class Location
             }
 
             @Override
-            protected void onPostExecute(List<HashMap<String, String>> hashMaps) {
+            protected void onPostExecute(List<Restaurant> hashMaps) {
                 super.onPostExecute(hashMaps);
                 System.out.println(hashMaps);
+                recyclerView.setAdapter(new ListAdapter(hashMaps));
             }
         }
     }
