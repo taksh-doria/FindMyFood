@@ -20,9 +20,6 @@ public class Permission {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     MY_PERMISSIONS_REQUEST_LOCATION);
         }
-        else {
-            Toast.makeText(context,"Permission Granted",Toast.LENGTH_LONG).show();
-        }
         return;
     }
 }

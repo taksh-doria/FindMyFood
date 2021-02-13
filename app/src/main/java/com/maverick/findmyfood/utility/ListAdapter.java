@@ -1,5 +1,6 @@
 package com.maverick.findmyfood.utility;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
     {
         Restaurant data=restaurants.get(position);
         holder.name.setText(data.getName());
+        holder.rating.setText(data.getUser_rating());
+        holder.cuisines.setText(Html.fromHtml("<b>Casual Dining:</b> "+data.getCusines()));
     }
 
     @Override
@@ -44,9 +47,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
     public class ResturantViewHolder extends RecyclerView.ViewHolder
     {
         TextView name;
+        TextView rating;
+        TextView cuisines;
         public ResturantViewHolder(@NonNull View itemView) {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.restaurant_name);
+            rating=(TextView)itemView.findViewById(R.id.user_rating);
+            cuisines=(TextView)itemView.findViewById(R.id.restaurant_cuisines);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
 
     }

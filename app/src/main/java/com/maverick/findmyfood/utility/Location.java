@@ -3,6 +3,8 @@ package com.maverick.findmyfood.utility;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +31,11 @@ public class Location
 {
     public RecyclerView recyclerView;
     public android.location.Location user_location;
+    public ProgressBar progressBar;
 
-    public Location(RecyclerView recyclerView) {
+    public Location(RecyclerView recyclerView,ProgressBar pbar) {
         this.recyclerView=recyclerView;
+        this.progressBar=pbar;
     }
 
     public android.location.Location getLocation(Context context)
@@ -119,6 +123,7 @@ public class Location
             @Override
             protected void onPostExecute(List<Restaurant> hashMaps) {
                 super.onPostExecute(hashMaps);
+                progressBar.setVisibility(View.INVISIBLE);
                 System.out.println(hashMaps);
                 recyclerView.setAdapter(new ListAdapter(hashMaps));
             }
