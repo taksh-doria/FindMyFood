@@ -64,8 +64,6 @@
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            //disable nightmode
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             setContentView(R.layout.activity_main);
             mAuth=FirebaseAuth.getInstance();
             mGoogleSignInClient= Authentication.requestService(this);
