@@ -48,4 +48,5 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'de.hdodenhof:circleimageview:1.2.1'
+    implementation 'com.github.thekhaeng:pushdown-anim-click:1.1.1'
 }

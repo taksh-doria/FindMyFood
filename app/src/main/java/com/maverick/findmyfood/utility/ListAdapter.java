@@ -1,5 +1,7 @@
 package com.maverick.findmyfood.utility;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.maverick.findmyfood.R;
+import com.maverick.findmyfood.appmain.Detail;
 import com.maverick.findmyfood.model.Restaurant;
+import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.util.List;
 
@@ -34,9 +38,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
     public void onBindViewHolder(@NonNull ResturantViewHolder holder, int position)
     {
         Restaurant data=restaurants.get(position);
-        holder.name.setText(data.getName());
-        holder.rating.setText(data.getUser_rating());
-        holder.cuisines.setText(Html.fromHtml("<b>Casual Dining:</b> "+data.getCusines()));
+        holder.bind(data);
     }
 
     @Override
@@ -51,13 +53,29 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
         TextView cuisines;
         public ResturantViewHolder(@NonNull View itemView) {
             super(itemView);
+        }
+        public void bind(Restaurant item)
+        {
             name=(TextView)itemView.findViewById(R.id.restaurant_name);
             rating=(TextView)itemView.findViewById(R.id.user_rating);
             cuisines=(TextView)itemView.findViewById(R.id.restaurant_cuisines);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            name.setText(item.getName());
+            rating.setText(item.getUser_rating());
+            rating.setClickable(false);
+            cuisines.setText(Html.fromHtml("<b>Casual Dining:</b> "+item.getCusines()));
+            PushDownAnim.setPushDownAnimTo(itemView).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent=new Intent(itemView.getContext(), Detail.class);
+                    intent.putExtra("name",item.getName());
+                    intent.putExtra("cuisines",item.getCusines());
+                    intent.putExtra("rating",item.getUser_rating());
+                    intent.putExtra("latitude",item.getLocation_latitude());
+                    intent.putExtra("longitude",item.getLocation_longitude());
+                    intent.putExtra("address",item.getAddress());
+                    intent.putExtra("cost",item.getAevrage_cost_for_two());
+                    intent.putExtra("menu",item.getMenu_url());
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }

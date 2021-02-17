@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".appmain.Detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            app:srcCompat="@drawable/_967716" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Restaurant Name"
+                    android:textColor="#8E0000"
+                    android:textSize="28sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/cuisines"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="Cuisines"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/cost"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="Cost:"
+                        android:textSize="18sp" />
+
+                    <RatingBar
+                        android:id="@+id/rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:clickable="false"
+                        android:numStars="5"
+                        android:stepSize="0.1" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Address" />
+
+                    <Button
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/getmenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="View Menu"
+                        app:icon="@android:drawable/ic_menu_sort_by_size" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <Button
+                            android:id="@+id/addfavourite"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:text="Favourite"
+                            android:textAllCaps="false"
+                            app:backgroundTint="#ff8a80 "
+                            app:icon="@drawable/ic_baseline_favorite_border_24" />
+
+                        <Button
+                            android:id="@+id/directions"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:text="Directions"
+                            android:textAllCaps="false"
+                            app:backgroundTint="#69F0AE"
+                            app:icon="@android:drawable/ic_menu_directions" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,6 +36,7 @@
     import com.maverick.findmyfood.appmain.HomeActivity;
     import com.maverick.findmyfood.utility.Authentication;
     import com.maverick.findmyfood.utility.Permission;
+    import com.thekhaeng.pushdownanim.PushDownAnim;
 
     public class MainActivity extends AppCompatActivity {
         public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -69,12 +70,14 @@
             mGoogleSignInClient= Authentication.requestService(this);
             gbutton=(Button)findViewById(R.id.gsignin_button);
             progressBar=(ProgressBar)findViewById(R.id.progressBar);
-            gbutton.setOnClickListener(new View.OnClickListener() {
+            PushDownAnim.setPushDownAnimTo( gbutton)
+        .setOnClickListener( new View.OnClickListener(){
                 @Override
-                public void onClick(View v) {
+                public void onClick( View view ){
                     signIn();
                 }
-            });
+
+            } );
             Permission.checkLocationPermission(this,this);
         }
 

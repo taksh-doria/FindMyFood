@@ -1,8 +1,11 @@
 package com.maverick.findmyfood.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.maverick.findmyfood.utility.Location;
 
-public class Restaurant
+public class Restaurant implements Parcelable
 {
     String name;
     String address;
@@ -12,6 +15,7 @@ public class Restaurant
     String photos_url,menu_url;
     int aevrage_cost_for_two;
     boolean takeaway,delivery;
+
 
     public String getName() {
         return name;
@@ -99,5 +103,15 @@ public class Restaurant
 
     public void setDelivery(boolean delivery) {
         this.delivery = delivery;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }
