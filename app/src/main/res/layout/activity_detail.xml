@@ -17,6 +17,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="280dp"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/_967716" />
 
         <androidx.cardview.widget.CardView
@@ -37,7 +38,7 @@
                     android:layout_height="65dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Restaurant Name"
-                    android:textColor="#8E0000"
+                    android:textColor="#ff5252 "
                     android:textSize="28sp" />
 
                 <LinearLayout
@@ -55,20 +56,19 @@
 
                     <TextView
                         android:id="@+id/cost"
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
                         android:text="Cost:"
                         android:textSize="18sp" />
 
                     <RatingBar
                         android:id="@+id/rating"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:clickable="false"
-                        android:numStars="5"
-                        android:stepSize="0.1" />
+                        android:isIndicator="true" />
 
                     <TextView
                         android:id="@+id/address"
@@ -78,15 +78,15 @@
                         android:text="Address" />
 
                     <Button
-                        android:layout_marginTop="10dp"
                         android:id="@+id/getmenu"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
                         android:text="View Menu"
                         app:icon="@android:drawable/ic_menu_sort_by_size" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
@@ -103,7 +103,7 @@
 
                         <Button
                             android:id="@+id/directions"
-                            android:layout_width="match_parent"
+                            android:layout_width="150dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="2dp"
                             android:text="Directions"
