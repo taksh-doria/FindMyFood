@@ -68,12 +68,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:clickable="false"
+                        android:stepSize="0.1"
                         android:isIndicator="true" />
 
                     <TextView
                         android:id="@+id/address"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_marginTop="10dp"
                         android:text="Address" />
 

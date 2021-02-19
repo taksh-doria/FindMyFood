@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindMyFood">
-        <activity android:name=".appmain.Detail"></activity>
+        <activity android:name=".appmain.WebActivity"></activity>
+        <activity android:name=".appmain.Detail" />
         <activity android:name=".appmain.HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

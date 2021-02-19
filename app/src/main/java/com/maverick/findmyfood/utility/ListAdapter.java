@@ -66,6 +66,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
             PushDownAnim.setPushDownAnimTo(itemView).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    System.out.println("average cost: "+item.getAevrage_cost_for_two());
                     Intent intent=new Intent(itemView.getContext(), Detail.class);
                     intent.putExtra("name",item.getName());
                     intent.putExtra("cuisines",item.getCusines());

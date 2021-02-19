@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -37,7 +38,20 @@ public class Detail extends AppCompatActivity {
         //latitude=Double.parseDouble(i.getStringExtra("latitude"));
         //longitude=Double.parseDouble(i.getStringExtra("longitude"));
         name.setText(i.getStringExtra("name"));
+        String rate=i.getStringExtra("rating");
+        System.out.println(rate);
         cuisines.setText(Html.fromHtml("<b>Cuisines</b>: "+i.getStringExtra("cuisines")));
+        cost.setText(Html.fromHtml("<b>Cost: </b>"+i.getStringExtra("cost")));
+        rating.setRating(Float.parseFloat(rate));
+        address.setText(Html.fromHtml("<b>Address: </b>"+i.getStringExtra("address")));
+        Intent intent=new Intent(this,WebActivity.class);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("menu",menu_url);
+                startActivity(intent);
+            }
+        });
 
     }
 }
