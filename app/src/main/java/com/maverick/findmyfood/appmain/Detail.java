@@ -59,7 +59,7 @@ public class Detail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("button clicked");
-                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+latitude+","+longitude));
+                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="+name.getText()+"&mode=d"));
                 intent.setPackage("com.google.android.apps.maps");
                 if (intent.resolveActivity(getPackageManager())!=null)
                 {
