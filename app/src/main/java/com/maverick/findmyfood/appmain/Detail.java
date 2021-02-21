@@ -3,6 +3,7 @@ package com.maverick.findmyfood.appmain;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -35,8 +36,8 @@ public class Detail extends AppCompatActivity {
         directions=(Button)findViewById(R.id.directions);
         Intent i=getIntent();
         menu_url=i.getStringExtra("menu");
-        //latitude=Double.parseDouble(i.getStringExtra("latitude"));
-        //longitude=Double.parseDouble(i.getStringExtra("longitude"));
+        latitude=Double.parseDouble(i.getStringExtra("latitude"));
+        longitude=Double.parseDouble(i.getStringExtra("longitude"));
         name.setText(i.getStringExtra("name"));
         String rate=i.getStringExtra("rating");
         System.out.println(rate);
@@ -52,6 +53,22 @@ public class Detail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        directions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("button clicked");
+                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+latitude+","+longitude));
+                intent.setPackage("com.google.android.apps.maps");
+                if (intent.resolveActivity(getPackageManager())!=null)
+                {
+                    startActivity(intent);
+                }
+            }
+        });
+
+
 
     }
 }

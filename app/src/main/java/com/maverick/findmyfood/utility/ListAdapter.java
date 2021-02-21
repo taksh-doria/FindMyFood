@@ -71,10 +71,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
                     intent.putExtra("name",item.getName());
                     intent.putExtra("cuisines",item.getCusines());
                     intent.putExtra("rating",item.getUser_rating());
-                    intent.putExtra("latitude",item.getLocation_latitude());
-                    intent.putExtra("longitude",item.getLocation_longitude());
+                    intent.putExtra("latitude",String.valueOf(item.getLocation_latitude()));
+                    intent.putExtra("longitude",String.valueOf(item.getLocation_longitude()));
                     intent.putExtra("address",item.getAddress());
-                    intent.putExtra("cost",item.getAevrage_cost_for_two());
+                    intent.putExtra("cost",String.valueOf(item.getAevrage_cost_for_two()));
                     intent.putExtra("menu",item.getMenu_url());
                     itemView.getContext().startActivity(intent);
                 }
