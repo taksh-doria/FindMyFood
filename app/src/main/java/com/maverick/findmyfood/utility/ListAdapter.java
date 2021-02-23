@@ -6,6 +6,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
         TextView name;
         TextView rating;
         TextView cuisines;
+        ImageView image;
         public ResturantViewHolder(@NonNull View itemView) {
             super(itemView);
         }
@@ -59,6 +61,32 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
             name=(TextView)itemView.findViewById(R.id.restaurant_name);
             rating=(TextView)itemView.findViewById(R.id.user_rating);
             cuisines=(TextView)itemView.findViewById(R.id.restaurant_cuisines);
+            image=(ImageView)itemView.findViewById(R.id.resturant_icon);
+            String[] imagedecision=item.getCusines().split(",");
+            System.out.println(imagedecision[0]+"  cuisine");
+            if (imagedecision!=null)
+            {
+                if (imagedecision[0].isEmpty())
+                {
+                    image.setImageResource(R.drawable.ramen);
+                }
+                if (imagedecision[0].contains("Indian")||imagedecision[0].contains("Gujarati"))
+                {
+                    image.setImageResource(R.drawable.indian);
+                }
+                if(imagedecision[0].contains("Fast Food"))
+                {
+                    image.setImageResource(R.drawable.fast_food);
+                }
+                if (imagedecision[0].contains("Seafood"))
+                {
+                    image.setImageResource(R.drawable.nonveg);
+                }
+                if (imagedecision[0].contains("Pizza"))
+                {
+                    image.setImageResource(R.drawable.pizza);
+                }
+            }
             name.setText(item.getName());
             rating.setText(item.getUser_rating());
             rating.setClickable(false);
