@@ -1,5 +1,6 @@
 package com.maverick.findmyfood.appmain;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,10 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.maverick.findmyfood.R;
 import com.maverick.findmyfood.model.Restaurant;
 import com.maverick.findmyfood.utility.Location;
+
+import java.util.Date;
+import java.util.HashMap;
 
 public class Detail extends AppCompatActivity {
     TextView name,cuisines,cost,address;
@@ -21,6 +33,8 @@ public class Detail extends AppCompatActivity {
     RatingBar rating;
     String menu_url;
     Button menu,favourite,directions;
+    FirebaseFirestore firestore;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +48,8 @@ public class Detail extends AppCompatActivity {
         menu=(Button)findViewById(R.id.getmenu);
         favourite=(Button)findViewById(R.id.addfavourite);
         directions=(Button)findViewById(R.id.directions);
+        firestore=FirebaseFirestore.getInstance();
+        user= FirebaseAuth.getInstance().getCurrentUser();
         Intent i=getIntent();
         menu_url=i.getStringExtra("menu");
         latitude=Double.parseDouble(i.getStringExtra("latitude"));
@@ -51,6 +67,35 @@ public class Detail extends AppCompatActivity {
             public void onClick(View v) {
                 intent.putExtra("menu",menu_url);
                 startActivity(intent);
+            }
+        });
+
+
+        favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String,String> map=new HashMap<>();
+                map.put("user",user.getEmail());
+                map.put("name",i.getStringExtra("name"));
+                map.put("cuisines",i.getStringExtra("cuisines"));
+                map.put("latitude",i.getStringExtra("latitude"));
+                map.put("longitude",i.getStringExtra("longitude"));
+                map.put("cost",i.getStringExtra("cost"));
+                map.put("address",i.getStringExtra("address"));
+                map.put("rating",i.getStringExtra("rating"));
+                map.put("menu_url",i.getStringExtra("menu"));
+                map.put("time_stamp",new Timestamp(new Date()).toString());
+                firestore.collection("favourites").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(v.getContext(),"Added to Favourites",Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(v.getContext(),"Unable to save data at moment!",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

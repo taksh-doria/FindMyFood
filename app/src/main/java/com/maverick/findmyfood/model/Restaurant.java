@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.maverick.findmyfood.utility.Location;
 
-public class Restaurant implements Parcelable
+public class Restaurant
 {
     String name;
     String address;
@@ -14,7 +14,6 @@ public class Restaurant implements Parcelable
     String user_rating;
     String photos_url,menu_url;
     int aevrage_cost_for_two;
-    boolean takeaway,delivery;
 
 
     public String getName() {
@@ -89,29 +88,4 @@ public class Restaurant implements Parcelable
         this.aevrage_cost_for_two = aevrage_cost_for_two;
     }
 
-    public boolean isTakeaway() {
-        return takeaway;
-    }
-
-    public void setTakeaway(boolean takeaway) {
-        this.takeaway = takeaway;
-    }
-
-    public boolean isDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(boolean delivery) {
-        this.delivery = delivery;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
-}
+   }

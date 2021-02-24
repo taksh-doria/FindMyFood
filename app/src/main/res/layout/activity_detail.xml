@@ -28,7 +28,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -74,28 +74,28 @@
                     <TextView
                         android:id="@+id/address"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="45dp"
                         android:layout_marginTop="10dp"
                         android:text="Address" />
 
                     <Button
                         android:id="@+id/getmenu"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:text="View Menu"
                         app:icon="@android:drawable/ic_menu_sort_by_size" />
 
                     <LinearLayout
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
-                        android:padding="2dp">
+                        >
 
                         <Button
                             android:id="@+id/addfavourite"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="Favourite"
                             android:textAllCaps="false"
@@ -104,9 +104,9 @@
 
                         <Button
                             android:id="@+id/directions"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="2dp"
+                            android:layout_marginLeft="40dp"
                             android:text="Directions"
                             android:textAllCaps="false"
                             app:backgroundTint="#69F0AE"
