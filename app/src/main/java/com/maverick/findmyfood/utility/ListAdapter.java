@@ -27,6 +27,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ResturantViewH
         this.restaurants=restaurants;
     }
 
+    public ListAdapter() {
+
+    }
+
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
+    }
+
     @NonNull
     @Override
     public ResturantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

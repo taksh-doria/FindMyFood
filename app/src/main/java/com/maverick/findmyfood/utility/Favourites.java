@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,11 +20,12 @@ import com.maverick.findmyfood.model.Restaurant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Favourites {
+public class Favourites  {
 
     private final RecyclerView view;
     private final LinearLayout layout;
     private final ProgressBar pbar;
+    ListAdapter listAdapter=new ListAdapter();
     List<Restaurant> list=null;
 
 
@@ -35,6 +38,24 @@ public class Favourites {
     {
         new Firestore().execute();
     }
+    public ItemTouchHelper.SimpleCallback callback=new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position=viewHolder.getAdapterPosition();
+            list.remove(position);
+            if (list.isEmpty())
+            {
+                layout.setVisibility(View.VISIBLE);
+            }
+            listAdapter.notifyItemRemoved(position);
+
+        }
+    };
     public class Firestore extends AsyncTask<Void, Void, List<Restaurant>> {
 
         @Override
@@ -68,7 +89,8 @@ public class Favourites {
                         if (!restaurants.isEmpty())
                         {
                             layout.setVisibility(View.GONE);
-                            view.setAdapter(new ListAdapter(restaurants));
+                            listAdapter.setRestaurants(restaurants);
+                            view.setAdapter(listAdapter);
                             pbar.setVisibility(View.INVISIBLE);
                         }
                         else

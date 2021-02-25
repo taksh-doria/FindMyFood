@@ -3,6 +3,7 @@ package com.maverick.findmyfood.appmain;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +33,8 @@ public class FavouriteFragment extends Fragment {
         progressBar=(ProgressBar)v.findViewById(R.id.progressBar_fav);
         Favourites favourites=new Favourites(layout,recyclerView,progressBar);
         favourites.getList();
+        ItemTouchHelper helper=new ItemTouchHelper(favourites.callback);
+        helper.attachToRecyclerView(recyclerView);
         return  v;
     }
 }
