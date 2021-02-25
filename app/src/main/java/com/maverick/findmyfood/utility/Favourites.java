@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -27,6 +28,9 @@ public class Favourites  {
     private final ProgressBar pbar;
     ListAdapter listAdapter=new ListAdapter();
     List<Restaurant> list=null;
+    FirebaseAuth mauth = FirebaseAuth.getInstance();
+    FirebaseUser user = mauth.getCurrentUser();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
     public Favourites(LinearLayout layout, RecyclerView view, ProgressBar progressBar) {
@@ -47,6 +51,18 @@ public class Favourites  {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             int position=viewHolder.getAdapterPosition();
+            db.collection("favourites").whereEqualTo("name",list.get(position).getName())
+                    .whereEqualTo("user",user.getEmail())
+                    .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot doc:queryDocumentSnapshots.getDocuments())
+                    {
+                        doc.getReference().delete();
+                    }
+                    Toast.makeText(layout.getContext(),"Removed from favourites!",Toast.LENGTH_SHORT).show();
+                }
+            });
             list.remove(position);
             if (list.isEmpty())
             {
@@ -60,9 +76,6 @@ public class Favourites  {
 
         @Override
         protected List<Restaurant> doInBackground(Void... voids) {
-            FirebaseAuth mauth = FirebaseAuth.getInstance();
-            FirebaseUser user = mauth.getCurrentUser();
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
             System.out.println(user.getEmail());
             db.collection("favourites").whereEqualTo("user", user.getEmail()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
