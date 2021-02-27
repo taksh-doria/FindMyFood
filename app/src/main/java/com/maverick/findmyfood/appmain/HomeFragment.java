@@ -1,7 +1,12 @@
 package com.maverick.findmyfood.appmain;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -44,7 +49,7 @@ public class HomeFragment extends Fragment {
           Location location=new Location(recyclerView,progressBar);
           System.out.println("requesting location");
           getLocation(root.getContext());
-          if (user_location!=null)
+          if (user_location!=null && checkConnection(root.getContext()))
           {
               System.out.println(user_location.toString());
               location.user_location=user_location;
@@ -59,5 +64,23 @@ public class HomeFragment extends Fragment {
     {
         user_location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         user_location = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+    }
+
+    public boolean checkConnection(Context context)
+    {
+        ConnectivityManager conMgr =  (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+        if (netInfo == null){
+
+            new AlertDialog.Builder(context)
+                    .setTitle(getResources().getString(R.string.app_name))
+                    .setMessage(getResources().getString(R.string.internet_error))
+                    .setPositiveButton("OK", null).show();
+
+            return false;
+        }else{
+            return  true;
+        }
+
     }
 }
