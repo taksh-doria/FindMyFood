@@ -11,7 +11,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/account_tab"
+            android:background="@drawable/tab_back"
             android:orientation="horizontal">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="120dp"
@@ -46,6 +46,14 @@
                     android:text="sample@gmail.com"
                     android:textColor="#FFFFFF"
                     android:textSize="17sp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:textAllCaps="false"
+                    android:id="@+id/signout"
+                    android:backgroundTint="#ED9999"
+                    android:text="SignOut"/>
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
