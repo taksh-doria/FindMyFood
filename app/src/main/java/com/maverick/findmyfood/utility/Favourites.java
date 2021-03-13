@@ -17,6 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.maverick.findmyfood.model.Restaurant;
+import com.maverick.findmyfood.utility.adapter.ListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

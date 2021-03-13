@@ -1,4 +1,4 @@
-package com.maverick.findmyfood.utility;
+package com.maverick.findmyfood.utility.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.maverick.findmyfood.R;
 import com.maverick.findmyfood.model.Reviews;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 

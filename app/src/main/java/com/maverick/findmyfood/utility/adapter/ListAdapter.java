@@ -1,6 +1,5 @@
-package com.maverick.findmyfood.utility;
+package com.maverick.findmyfood.utility.adapter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;

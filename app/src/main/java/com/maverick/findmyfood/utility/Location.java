@@ -1,6 +1,5 @@
 package com.maverick.findmyfood.utility;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
@@ -14,6 +13,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.maverick.findmyfood.R;
 import com.maverick.findmyfood.model.Restaurant;
+import com.maverick.findmyfood.utility.adapter.ListAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +24,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 
 public class Location

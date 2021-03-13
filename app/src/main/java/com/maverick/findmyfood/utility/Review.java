@@ -13,6 +13,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.maverick.findmyfood.model.Reviews;
+import com.maverick.findmyfood.utility.adapter.ReviewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
