@@ -62,6 +62,7 @@ public class Review
                     if (reviews!=null&&(!reviews.isEmpty()))
                     {
                         System.out.println("not empty");
+                        recyclerView.setVisibility(View.VISIBLE);
                         layout.setVisibility(View.GONE);
                         recyclerView.setAdapter(new ReviewAdapter(reviews));
                     }

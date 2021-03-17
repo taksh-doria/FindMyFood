@@ -145,7 +145,8 @@
                         android:textAlignment="center"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:minHeight="150dp"
+                        android:layout_height="match_parent"
                         android:id="@+id/review_recycler"/>
                     <LinearLayout
                         android:id="@+id/no_review"
